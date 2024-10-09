@@ -56,7 +56,6 @@ fun NewsFeedScreen(onNewsCardClick: (String) -> Unit) {
 
     val viewModel: NewsFeedViewModel = hiltViewModel()
     val state by rememberStateWithLifecycle(viewModel.state)
-    var searchBarComponentVisible by remember { mutableStateOf(false) }
     val listState = rememberLazyListState()
     val context = LocalContext.current
     val errorMessage = state.errorState as? MessageState.Inline
@@ -73,38 +72,11 @@ fun NewsFeedScreen(onNewsCardClick: (String) -> Unit) {
     BaseScreen(
         state = state,
         topAppBarContent = { ToolBarTitleComponent(text = stringResource(R.string.news_feed)) },
-        trailingIconOne = {
-            ToolBarActionComponents(
-                modifier = Modifier.background(
-                    color = MaterialTheme.colorScheme.primary,
-                ),
-                name = stringResource(R.string.search),
-                onClick = { searchBarComponentVisible = !searchBarComponentVisible },
-                icon = Icons.Default.Search
-            )
-        },
         onSystemBackClick = {
-            if (searchBarComponentVisible) {
-                searchBarComponentVisible = false
-            } else {
-                activity?.finishAffinity()
-            }
+            activity?.finishAffinity()
         },
     ) {
         Column {
-            AnimatedSearchBarComponent(searchQuery = state.searchQuery,
-                searchBarComponentVisible = searchBarComponentVisible,
-                onCloseSearchClick = {
-                    searchBarComponentVisible = false
-                },
-                onValueChange = {
-                    viewModel.onViewAction(NewsFeedViewAction.UpdateSearchQuery(it))
-                },
-                onSearch = {
-                    searchBarComponentVisible = false
-                    viewModel.onViewAction(NewsFeedViewAction.SearchNewsFeed)
-                })
-
             if (state.newsFeedList.isEmpty() && !state.isLoading) {
                 CenteredText(
                     buttonText = stringResource(R.string.retry),
@@ -118,7 +90,7 @@ fun NewsFeedScreen(onNewsCardClick: (String) -> Unit) {
                 !state.isLoading &&
                 state.searchQuery.isNotEmpty()
             ) {
-                if (!searchBarComponentVisible &&  state.searchQuery.isNotEmpty()) {
+                if (state.searchQuery.isNotEmpty()) {
                     CenteredText(
                         buttonText = stringResource(R.string.reload_news),
                         text = stringResource(
@@ -126,7 +98,6 @@ fun NewsFeedScreen(onNewsCardClick: (String) -> Unit) {
                             state.searchQuery
                         ),
                         onCenteredTextAction = {
-                            searchBarComponentVisible = false
                             viewModel.onViewAction(NewsFeedViewAction.UpdateSearchQuery(""))
                             viewModel.onViewAction(NewsFeedViewAction.GetNewsFeed)
                         })

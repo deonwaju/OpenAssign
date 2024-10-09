@@ -52,7 +52,7 @@ fun BaseScreen(
                     modifier = Modifier.shadow(8.dp, shape = RectangleShape),
                     title = topAppBarContent,
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = MaterialTheme.colorScheme.primary,
+                        containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f),
                         titleContentColor = MaterialTheme.colorScheme.onPrimary,
                     ),
                     navigationIcon = {
