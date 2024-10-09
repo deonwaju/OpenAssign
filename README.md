@@ -11,13 +11,14 @@ A modern Android application that provides a news feed and detailed views of new
 ## Table of Contents
 
 - [Features](#features)
-- [Architecture](#architecture)
-  - [Modules](#modules)
-  - [Presentation Layer](#presentation-layer)
+- [Clean Architecture](#architecture)
+- [Solid Principles](#architecture)
+- [Modularization](#modules)
+- [Presentation Layer](#presentation-layer)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Testing](#testing)
+- [Unit Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
 
