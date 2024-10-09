@@ -2,6 +2,12 @@
 
 A modern Android application that provides a news feed and detailed views of news articles. Built using **Jetpack Compose** and adhering to **Clean Architecture** principles, this app showcases best practices in Android development, including dependency injection, modularization, and unit testing.
 
+<img width="357" alt="Screenshot 2024-10-09 at 18 43 57" src="https://github.com/user-attachments/assets/63b0f6fe-b86b-49a5-b093-bf73b21b83e3">
+
+<img width="358" alt="Screenshot 2024-10-09 at 18 44 51" src="https://github.com/user-attachments/assets/aa53cc7a-2b91-499d-b980-0c25c4ed21e3">
+
+<img width="357" alt="Screenshot 2024-10-09 at 18 44 57" src="https://github.com/user-attachments/assets/a53bf67c-194c-4133-a159-e3ff5d2a5035">
+
 ## Table of Contents
 
 - [Features](#features)
@@ -19,8 +25,12 @@ A modern Android application that provides a news feed and detailed views of new
 
 - Display a list of news articles with an infinite scrolling feature.
 - View detailed information about each news article.
-- Search functionality to find specific news articles.
 - Smooth UI interactions built with Jetpack Compose.
+
+## To Do
+- Search functionality to find specific news articles.
+- Allow User select news genres
+
 
 ## Architecture
 
